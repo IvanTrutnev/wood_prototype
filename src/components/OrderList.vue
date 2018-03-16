@@ -21,7 +21,6 @@
       </div>
       <div class="search-form__button d-flex justify-content-between">
         <button class="btn btn-success" @click="search">Search</button>
-        <button class="btn btn-warning" @click="addItem">Add Item</button>
       </div>
       <div>
 
@@ -93,9 +92,6 @@
           .then(data => {
             this.$store.commit('orders/loadOItems', data);
           });
-      },
-      addItem() {
-        console.log('add Item');
       }
     },
     components: {
