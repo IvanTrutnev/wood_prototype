@@ -5,13 +5,10 @@
     </div>
     <div class="seearch-form">
       <div class="search-form__filters">
+
         <div>
-          <label class="typo__label">Countries</label>
-          <multiselect v-model="searchData.countries.value" tag-placeholder="Add this as new tag" placeholder="Search or add a tag" label="name" track-by="code" :options="searchData.countries.options" :multiple="true" :taggable="true"></multiselect>
-        </div>
-        <div>
-          <label class="typo__label">Names</label>
-          <multiselect v-model="searchData.names.value" tag-placeholder="Add this as new tag" placeholder="Search or add a tag" label="name" track-by="name" :options="searchData.names.options" :multiple="true" :taggable="true"></multiselect>
+          <label class="typo__label">Creator</label>
+          <multiselect v-model="searchData.user.value" tag-placeholder="Add this as new tag" placeholder="Search or add a tag" label="username" track-by="username" :options="searchData.user.options" :multiple="true" :taggable="true"></multiselect>
         </div>
         <div>
             <label class="typo__label">Buyer</label>
@@ -42,7 +39,7 @@
     <!--</div>-->
 
     <div>
-        <order-list-grid :modelUpdated="onModelUpdated"></order-list-grid>
+        <order-list-grid></order-list-grid>
     </div>
   </div>
 </template>
@@ -61,32 +58,12 @@
       return {
         //gridOptions: null,
         searchData: {
-          countries: {
-            value: [
-              { name: 'Jamaica', code: 'ja'}
-            ],
-            options: [
-              { name: 'Jamaica', code: 'ja'},
-              { name: 'Soutch Africa', code: 'sa'},
-              { name: 'Canada', code: 'ca'},
-              { name: 'BE', code: 'be'},
-              { name: 'AAAAAAA', code: 'aa'},
-              { name: 'QQQQQQQ', code: 'qq'},
-              { name: 'WWWWWWW', code: 'ww'},
-              { name: 'EEEEEEEE', code: 'ee'},
-              { name: 'TTTTTTT', code: 'tt'}
-            ]
-          },
-          names: {
-            value: [{name: 'order1'}],
-            options: [
-              { name: 'order1'},
-              { name: 'order2'},
-              { name: 'order3'}
-            ]
-          },
           date: new Date(),
           partner: {
+            value: [],
+            options: []
+          },
+          user: {
             value: [],
             options: []
           }
@@ -100,12 +77,8 @@
       })
     },
     methods: {
-      onModelUpdated() {
-        console.log('onModelUpdated');
-      },
       search(){
-        let countries = this.searchData.countries.value.map((item) => item.name),
-            names = this.searchData.names.value.map((item) => item.name),
+        let user = this.searchData.user.value.map(item => item.id),
             buyer = this.searchData.partner.value.map(item => item.id),
             date = this.searchData.date;
         console.log(buyer);
@@ -114,7 +87,7 @@
           limit: 100,
           offset: 0,
           partner: buyer.toString(),
-          user: ''
+          user: user.toString()
         }})
           .then(response => response.json())
           .then(data => {
@@ -123,31 +96,6 @@
       },
       addItem() {
         console.log('add Item');
-        //console.log(this.orders);
-        //this.gridOptions.api.setRowData(this.orders);
-      },
-      createRowData() {
-        this.$store.dispatch('orders/loadItems');
-      },
-      createColumnDefs() {
-        return [
-          {
-            headerName: "Id",
-            field: "id",
-            width: 450,
-            pinnedRowCellRendererParams: {
-              style: {'font-weight': 'bold'}
-            }
-          },
-          {
-            headerName: "Status",
-            field: "status",
-            width: 430,
-            pinnedRowCellRendererParams: {
-              style: {'font-style': 'italic'}
-            }
-          },
-        ];
       }
     },
     components: {
@@ -159,15 +107,33 @@
     beforeMount() {
       this.$http.get('woodware/list/search_for_partner_select2_view/', {params: {
       role: 'customer',
-
-    }})
+      }})
       .then(response => response.json())
       .then(data => {
         console.log(data);
         this.searchData.partner.options = data;
-      });
-    }
 
+        this.$http.get('woodware/list/users/')
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+            this.searchData.user.options = data;
+            this.$http.get('sales/search_for_sales_order/', {params: {
+              status_name: '',
+              limit: 100,
+              offset: 0,
+              partner: '',
+              user: ''
+            }})
+              .then(response => response.json())
+              .then(data => {
+                console.log(data);
+                this.$store.commit('orders/loadOItems', data);
+              });
+          });
+      });
+
+    }
   }
 </script>
 

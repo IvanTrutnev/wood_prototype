@@ -30,18 +30,18 @@
 //        enableColResize: true,
 //        enableSorting: true
 //      };
-      this.$http.get('sales/search_for_sales_order/', {params: {
-        status_name: '',
-        limit: 100,
-        offset: 0,
-        partner: '',
-        user: ''
-      }})
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
-          this.$store.commit('orders/loadOItems', data);
-        });
+//      this.$http.get('sales/search_for_sales_order/', {params: {
+//        status_name: '',
+//        limit: 100,
+//        offset: 0,
+//        partner: '',
+//        user: ''
+//      }})
+//        .then(response => response.json())
+//        .then(data => {
+//          console.log(data);
+//          this.$store.commit('orders/loadOItems', data);
+//        });
     },
     created() {
     }
