@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 import BootstrapVue from 'bootstrap-vue';
+
 Vue.use(BootstrapVue);
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -17,6 +18,7 @@ import 'nprogress/nprogress.css'
 
 import {store} from './store';
 import {router} from './routes.js';
+
 
 import VueResource from 'vue-resource';
 Vue.use(VueResource);

@@ -3,7 +3,7 @@
     <div>
       <h2>Order list component</h2>
     </div>
-    <div class="seearch-form">
+    <div class="search-form">
       <div class="search-form__filters">
 
         <div>
@@ -15,8 +15,9 @@
             <multiselect v-model="searchData.partner.value" tag-placeholder="Add this as new tag" placeholder="Search or add a tag" label="text" track-by="text" :options="searchData.partner.options" :multiple="true" :taggable="true"></multiselect>
         </div>
         <div>
-            <label class="typo__label">Date</label>
-            <datepicker v-model="searchData.date"></datepicker>
+            <label class="typo__label">Order Date</label>
+            <datepicker v-model="searchData.created_date_between_0"></datepicker>
+            <!--:format="customFormatter"-->
         </div>
       </div>
       <div class="search-form__button d-flex justify-content-between">
@@ -51,13 +52,13 @@
   import Multiselect from 'vue-multiselect';
   import Datepicker from 'vuejs-datepicker';
   import orderListGrid from './orderListGrid'
-
+  import moment from 'moment';
   export default {
     data() {
       return {
         //gridOptions: null,
         searchData: {
-          date: new Date(),
+          created_date_between_0: new Date(),
           partner: {
             value: [],
             options: []
@@ -76,21 +77,26 @@
       })
     },
     methods: {
+//      customFormatter(date) {
+//        return moment(date).format('YYYY-MM-DD');
+//      },
       search(){
         let user = this.searchData.user.value.map(item => item.id),
-            buyer = this.searchData.partner.value.map(item => item.id),
-            date = this.searchData.date;
-        console.log(buyer);
+          partner = this.searchData.partner.value.map(item => item.id),
+          created_date_between_0 = moment(this.searchData.created_date_between_0).format('YYYY-MM-DD');
+
+        console.log(created_date_between_0);
         this.$http.get('sales/search_for_sales_order/', {params: {
           status_name: '',
           limit: 100,
           offset: 0,
-          partner: buyer.toString(),
+          created_date_between_0: created_date_between_0,
+          partner: partner.toString(),
           user: user.toString()
         }})
           .then(response => response.json())
           .then(data => {
-            this.$store.commit('orders/loadOItems', data);
+            this.$store.commit('orders/setData', data);
           });
       }
     },
@@ -106,26 +112,12 @@
       }})
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         this.searchData.partner.options = data;
-
         this.$http.get('woodware/list/users/')
           .then(response => response.json())
           .then(data => {
-            console.log(data);
             this.searchData.user.options = data;
-            this.$http.get('sales/search_for_sales_order/', {params: {
-              status_name: '',
-              limit: 100,
-              offset: 0,
-              partner: '',
-              user: ''
-            }})
-              .then(response => response.json())
-              .then(data => {
-                console.log(data);
-                this.$store.commit('orders/loadOItems', data);
-              });
+            this.$store.dispatch('orders/loadOrders');
           });
       });
 
@@ -134,7 +126,7 @@
 </script>
 
 <style scoped>
-  .search-form__filters, .seearch-form {
+  .search-form__filters, .search-form {
     margin-bottom: 20px;
   }
 </style>

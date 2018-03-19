@@ -19,10 +19,10 @@ const routes = [
     name: 'orders',
 		path: '/orders',
 		component: OrderList,
-    beforeEnter(from, to, next){
-      //store.dispatch('orders/loadItems');
-    next();
-  }
+  //   beforeEnter(from, to, next){
+  //     //store.dispatch('orders/loadItems');
+  //   next();
+  // }
 	},
   {
     name: 'invoices',
