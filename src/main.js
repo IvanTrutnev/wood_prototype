@@ -11,6 +11,7 @@ import "../node_modules/ag-grid/dist/styles/ag-grid.css";
 import "../node_modules/ag-grid/dist/styles/theme-fresh.css";
 
 import "../node_modules/vue-multiselect/dist/vue-multiselect.min.css";
+import "./assets/styles.css"
 
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
