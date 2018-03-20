@@ -18,7 +18,7 @@
     },
     computed: {
       ...mapGetters('orders',{
-        gridOptions: 'gridOptions'
+            gridOptions: 'gridOptions'
         })
     },
     components: {
