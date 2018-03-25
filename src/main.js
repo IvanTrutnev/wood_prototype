@@ -46,9 +46,6 @@ new Vue({
   created: function () {
     this.checkLogin();
   },
-  watch:{
-    '$route':'checkLogin'
-  },
   methods: {
     checkLogin() {
       if (!localStorage.getItem('login')) {
@@ -56,7 +53,7 @@ new Vue({
         return;
       }
       if (!this.$store.username && localStorage.getItem('login')) {
-        //this.$store.dispatch('updateUserName', 123);
+        this.$store.dispatch('login/updateUserName', 123);
         this.$router.push('orders');
         return
       }
