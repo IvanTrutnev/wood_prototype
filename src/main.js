@@ -1,6 +1,9 @@
 import Vue from 'vue';
 import App from './App.vue';
+import Vuex from 'vuex'
 import BootstrapVue from 'bootstrap-vue';
+
+Vue.use(Vuex);
 
 Vue.use(BootstrapVue);
 
@@ -22,6 +25,7 @@ import {router} from './routes.js';
 
 
 import VueResource from 'vue-resource';
+
 Vue.use(VueResource);
 Vue.http.options.root = 'https://wood.visata.org/api/';
 Vue.http.headers.common['Authorization'] = 'token 875ce3c994df550e37f4476bc8f1ac2570e2d9d3';
@@ -29,7 +33,7 @@ Vue.http.headers.common['Authorization'] = 'token 875ce3c994df550e37f4476bc8f1ac
 Vue.http.interceptors.push((request, next) => {
   console.log(NProgress);
   NProgress.start();
-  next((response)=>{
+  next((response) => {
     NProgress.done();
   });
 });
@@ -38,5 +42,28 @@ new Vue({
   el: '#app',
   store,
   router,
-  render: h => h(App)
+  render: h => h(App),
+  created: function () {
+    this.checkLogin();
+  },
+  watch:{
+    '$route':'checkLogin'
+  },
+  methods: {
+    checkLogin() {
+      if (!localStorage.getItem('login')) {
+        this.$router.push('/login');
+        return;
+      }
+      if (!this.$store.username && localStorage.getItem('login')) {
+        //this.$store.dispatch('updateUserName', 123);
+        this.$router.push('orders');
+        return
+      }
+      if(this.$store.username && localStorage.getItem('login')) {
+        this.$router.push('orders');
+      }
+    }
+  }
+
 })

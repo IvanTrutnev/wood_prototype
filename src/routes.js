@@ -7,6 +7,7 @@ import OrderList from './components/OrderList';
 import InvoiceList from './components/InvoiceList';
 import OrderProductList from './components/OrderProductList';
 import E404 from './components/E404';
+import Login from './components/Login'
 
 import {store} from './store';
 
@@ -14,6 +15,11 @@ const routes = [
   {
   	path: '',
   	redirect: {name: 'orders'}
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: Login
   },
   {
     name: 'orders',

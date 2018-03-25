@@ -1,7 +1,7 @@
 <template>
   <div class="container">
       <div class="row">
-        <div class="col col-sm-3 menu">
+        <div class="col col-sm-3 menu" v-if="isLogged">
           <ul class="list-group">
             <router-link v-for="(item, index) in menuList"
                    :key="index"
@@ -27,6 +27,11 @@
 	import {mapGetters} from 'vuex';
 
   export default {
+    data() {
+      return {
+        isLogged: false
+      }
+    },
 		computed: {
 			...mapGetters('menu', {
 				menuList: 'items'
@@ -34,7 +39,13 @@
       ...mapGetters('orders', {
         orders: 'orderList'
       })
-		}
+		},
+    beforeMount() {
+      if(localStorage.getItem('login')){
+        this.isLogged = true
+      }
+      console.log(this.isLogged);
+    }
 	}
 
 </script>
