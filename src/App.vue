@@ -1,7 +1,10 @@
 <template>
-  <div class="container">
+  <div class="container-fluid">
+    <header class="d-flex justify-content-end" v-if="this.$route.path !== '/login'">
+      <button class="btn btn-success" @click="logout">Logout</button>
+    </header>
     <div class="row">
-      <div class="col col-sm-3 menu" v-if="isLogged">
+      <div class="col-sm-3 menu" v-if="this.$route.path !== '/login'">
         <ul class="list-group">
           <router-link v-for="(item, index) in menuList"
                        :key="index"
@@ -14,11 +17,14 @@
           </router-link>
         </ul>
       </div>
-      <div class="col col-sm-9">
+      <div class="col-sm-9">
         <transition name="slide" mode="out-in">
-          <router-view></router-view>
+          <router-view v-if="$route.path !== '/login'"></router-view>
         </transition>
       </div>
+    </div>
+    <div class="container" v-if="$route.path === '/login'">
+      <router-view></router-view>
     </div>
   </div>
 </template>
@@ -27,6 +33,13 @@
   import {mapGetters} from 'vuex';
 
   export default {
+    methods: {
+      logout() {
+        //this.$store.dispatch('login/logout');
+          localStorage.removeItem('login');
+          location.reload();
+      }
+    },
     computed: {
       ...mapGetters('menu', {
         menuList: 'items'
@@ -43,7 +56,7 @@
 </script>
 
 <style scoped>
-  .container {
+  .container-fluid {
     padding-top: 15px;
   }
 

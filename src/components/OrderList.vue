@@ -13,10 +13,10 @@
             <label class="typo__label">Buyer</label>
             <multiselect v-model="searchData.partner.value" tag-placeholder="Add this as new tag" placeholder="Search or add a tag" label="text" track-by="text" :options="searchData.partner.options" :multiple="true" :taggable="true"></multiselect>
         </div>
-        <!--<div>-->
-            <!--<label class="type__label">Descriptor</label>-->
-            <!--<input class="form-control" v-model="searchData.descriptor" placeholder="Enter part of descriptor name">-->
-        <!--</div>-->
+        <div>
+            <label class="type__label">Descriptor</label>
+            <input class="form-control" v-model="searchData.descriptor" placeholder="Enter part of descriptor name">
+        </div>
         <div>
             <label class="typo__label">Order Date</label>
             <datepicker v-model="searchData.created_date_between_0" :clear-button="true" input-class="datepicker"

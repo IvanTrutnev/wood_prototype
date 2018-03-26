@@ -1,6 +1,10 @@
 <template>
   <div>
-    Order Product list component
+    <div>
+      <h2>
+        Order Product list
+      </h2>
+    </div>
     <hr />
     <div>
         <router-link :to="{name: 'orders'}">Start from main page</router-link>
