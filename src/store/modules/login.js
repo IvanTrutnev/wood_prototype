@@ -25,18 +25,12 @@ export default {
     },
     login(state) {
       state.isLogged = true;
-    },
-    logout(state) {
-      state.isLogged = false;
     }
   },
   actions: {
     updateUserName(store, name) {
       store.commit('setUserName', name);
       store.commit('login');
-    },
-    logout(store) {
-      store.commit('logout');
     }
   }
 };

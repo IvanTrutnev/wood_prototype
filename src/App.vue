@@ -1,26 +1,28 @@
 <template>
   <div class="container-fluid">
-    <header class="d-flex justify-content-end" v-if="this.$route.path !== '/login'">
+    <div v-if="$route.path !== '/login'">
+    <header class="d-flex justify-content-end">
       <button class="btn btn-success" @click="logout">Logout</button>
     </header>
-    <div class="row">
-      <div class="col-sm-3 menu" v-if="this.$route.path !== '/login'">
-        <ul class="list-group">
-          <router-link v-for="(item, index) in menuList"
-                       :key="index"
-                       :to="item.url"
-                       tag="li"
-                       class="list-group-item"
-                       active-class="active"
-          >
-            <a>{{ item.text }}</a>
-          </router-link>
-        </ul>
-      </div>
-      <div class="col-sm-9">
-        <transition name="slide" mode="out-in">
-          <router-view v-if="$route.path !== '/login'"></router-view>
-        </transition>
+      <div class="row">
+        <div class="col-sm-3 menu" v-if="this.$route.path !== '/login'">
+          <ul class="list-group">
+            <router-link v-for="(item, index) in menuList"
+                         :key="index"
+                         :to="item.url"
+                         tag="li"
+                         class="list-group-item"
+                         active-class="active"
+            >
+              <a>{{ item.text }}</a>
+            </router-link>
+          </ul>
+        </div>
+        <div class="col-sm-9">
+          <transition name="slide" mode="out-in">
+            <router-view ></router-view>
+          </transition>
+        </div>
       </div>
     </div>
     <div class="container" v-if="$route.path === '/login'">
@@ -35,7 +37,6 @@
   export default {
     methods: {
       logout() {
-        //this.$store.dispatch('login/logout');
           localStorage.removeItem('login');
           location.reload();
       }
