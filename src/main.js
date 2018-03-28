@@ -19,6 +19,10 @@ import "./assets/styles.css"
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 
+import VueSweetAlert from 'vue-sweetalert'
+
+Vue.use(VueSweetAlert)
+
 
 import {store} from './store';
 import {router} from './routes.js';
@@ -28,7 +32,7 @@ import VueResource from 'vue-resource';
 
 Vue.use(VueResource);
 Vue.http.options.root = 'https://wood.visata.org/api/';
-Vue.http.headers.common['Authorization'] = 'token 875ce3c994df550e37f4476bc8f1ac2570e2d9d3';
+//Vue.http.headers.common['Authorization'] = 'token 875ce3c994df550e37f4476bc8f1ac2570e2d9d3';
 
 Vue.http.interceptors.push((request, next) => {
   console.log(NProgress);

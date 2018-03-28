@@ -1,3 +1,5 @@
+import Vue from 'vue';
+
 let isLogged;
 if(localStorage.getItem('login')) {
   isLogged = true
@@ -28,8 +30,8 @@ export default {
     }
   },
   actions: {
-    updateUserName(store, name) {
-      store.commit('setUserName', name);
+    updateUserName(store, payLoad) {
+      store.commit('setUserName', payLoad.name);
       store.commit('login');
     }
   }

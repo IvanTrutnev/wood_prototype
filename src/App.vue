@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div v-if="$route.path !== '/login'">
     <header class="d-flex justify-content-end">
-      <button class="btn btn-success" @click="logout">Logout</button>
+      <button class="btn btn-secondary" @click="logout">Logout</button>
     </header>
       <div class="row">
         <div class="col-sm-3 menu" v-if="this.$route.path !== '/login'">
