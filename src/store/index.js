@@ -22,5 +22,12 @@ export const renderFunctions = {
       let maximumAccuracy = accuracy || 3;
       return value.toLocaleString('ru-RU',{ maximumFractionDigits: maximumAccuracy });
     }
+  },
+
+};
+
+export const commonFunctions = {
+  setToken: (token) => {
+    Vue.http.headers.common['Authorization'] = 'token ' + token;
   }
 };

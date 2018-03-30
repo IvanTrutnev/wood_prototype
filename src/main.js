@@ -41,6 +41,7 @@ Vue.http.interceptors.push((request, next) => {
     NProgress.done();
   });
 });
+import {commonFunctions} from "./store/index";
 
 new Vue({
   el: '#app',
@@ -57,6 +58,8 @@ new Vue({
         return;
       }
       if (!this.$store.username && localStorage.getItem('login')) {
+        //Vue.http.headers.common['Authorization'] = 'token ' + localStorage.getItem('token');
+        commonFunctions.setToken(localStorage.getItem('token'));
         this.$store.dispatch('login/updateUserName', 123);
         this.$router.push('orders');
         return

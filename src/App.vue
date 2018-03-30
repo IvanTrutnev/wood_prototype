@@ -17,6 +17,7 @@
               <a>{{ item.text }}</a>
             </router-link>
           </ul>
+
         </div>
         <div class="col-sm-9">
           <transition name="slide" mode="out-in">

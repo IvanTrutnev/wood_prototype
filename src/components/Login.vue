@@ -22,6 +22,8 @@
   import Loading from './Loading.vue'
   import {mapGetters} from 'vuex'
   import Vue from 'vue'
+  import {commonFunctions} from '../store'
+
   export default {
     components: {Loading},
     data() {
@@ -38,15 +40,18 @@
         if(this.user.username !== '' && this.user.password !== '') {
           this.loading = true;
           setTimeout(()=> {
-            this.loading = false;
+            //this.loading = false;
             this.$http.post('authtoken/', this.user)
               .then(response => response.json())
               .then(data => {
-                Vue.http.headers.common['Authorization'] = 'token ' + data.token;
+                //Vue.http.headers.common['Authorization'] = 'token ' + data.token;
+                commonFunctions.setToken(data.token);
                 this.$store.dispatch('login/updateUserName',this.user);
                 localStorage.setItem('login', true);
+                localStorage.setItem('token', data.token);
                 this.$router.push('/orders')
               }).catch(error => {
+              this.loading = false;
               console.log(error);
               this.$swal('Oops...', 'Something went wrong!', 'error')
             });
