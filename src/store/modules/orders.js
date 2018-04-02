@@ -16,7 +16,6 @@ export default {
         }
       },
       onGridReady() {
-        console.log(renderFunctions);
         this.api.sizeColumnsToFit();
       }
     }

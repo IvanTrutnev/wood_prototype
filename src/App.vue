@@ -1,19 +1,17 @@
 <template>
     <div class="container-fluid">
         <div v-if="$route.path !== '/login'">
-            <header class="d-flex justify-content-end">
+            <header class="d-flex justify-content-between">
+                <button class="btn btn-info" @click="showMenuFlag = !showMenuFlag">
+                    <transition name="slide" mode="out-in">
+                        <span v-if="showMenuFlag">Hide</span>
+                        <span v-else>Show</span>
+                    </transition>
+                </button>
                 <button class="btn btn-secondary" @click="logout">Logout</button>
             </header>
             <div class="row">
-                <div class="menu" v-if="this.$route.path !== '/login'" v-bind:class="{ 'col-sm-3': showMenuFlag, 'col-sm-1': !showMenuFlag}">
-                    <div class="menu__btn">
-                        <button class="btn btn-info" @click="showMenuFlag = !showMenuFlag">
-                            <transition name="slide" mode="out-in">
-                                <span v-if="showMenuFlag">Hide</span>
-                                <span v-else>Show</span>
-                            </transition>
-                        </button>
-                    </div>
+                <div class="menu col-sm-4" v-if="this.$route.path !== '/login' && showMenuFlag">
                     <ul class="list-group" v-if="showMenuFlag">
                         <router-link v-for="(item, index) in menuList"
                                      :key="index"
@@ -26,7 +24,7 @@
                         </router-link>
                     </ul>
                 </div>
-                <div v-bind:class="{ 'col-sm-9': showMenuFlag, 'col-sm-11': !showMenuFlag}">
+                <div v-bind:class="{ 'col-sm-8': showMenuFlag, 'col-sm-12': !showMenuFlag}">
                     <transition name="slide" mode="out-in">
                         <router-view></router-view>
                     </transition>
@@ -136,4 +134,5 @@
             transform: rotateY(90deg);
         }
     }
+
 </style>
