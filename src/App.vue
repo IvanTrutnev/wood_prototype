@@ -8,7 +8,10 @@
                         <span v-else>Show</span>
                     </transition>
                 </button>
-                <button class="btn btn-secondary" @click="logout">Logout</button>
+                <div>
+                    <span>{{username}}</span>
+                    <button class="btn btn-secondary logout__btn" @click="logout">Logout</button>
+                </div>
             </header>
             <div class="row">
                 <div class="menu col-sm-4" v-if="this.$route.path !== '/login' && showMenuFlag">
@@ -50,6 +53,9 @@
       logout() {
         localStorage.removeItem('login');
         location.reload();
+      },
+      test() {
+        console.log(this.username);
       }
     },
     computed: {
@@ -60,7 +66,7 @@
         orders: 'orderList'
       }),
       ...mapGetters('login', {
-        isLogged: 'isLogged'
+        username: 'username'
       })
     }
   }
@@ -83,6 +89,10 @@
 
     .list-group-item {
         transition: background 0.3s, color 0.3s;
+    }
+
+    .logout__btn {
+        margin-left: 20px;
     }
 
     .list-group-item a {

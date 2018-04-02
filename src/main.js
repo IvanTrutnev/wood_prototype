@@ -59,12 +59,12 @@ new Vue({
       if (!this.$store.username && localStorage.getItem('login')) {
         //Vue.http.headers.common['Authorization'] = 'token ' + localStorage.getItem('token');
         commonFunctions.setToken(localStorage.getItem('token'));
-        this.$store.dispatch('login/updateUserName', 123);
-        this.$router.push('orders');
+        this.$store.dispatch('login/updateUserName', {username: localStorage.getItem('username')});
+        this.$router.push('');
         return
       }
       if(this.$store.username && localStorage.getItem('login')) {
-        this.$router.push('orders');
+        this.$router.push('');
       }
     }
   }

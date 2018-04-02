@@ -1,38 +1,22 @@
-import Vue from 'vue'
-
-let isLogged;
-if(localStorage.getItem('login')) {
-  isLogged = true
-} else {
-  isLogged = false
-}
-
 export default {
   namespaced: true,
   state: {
-    username: '',
-    isLogged: isLogged
+    username: ''
   },
   getters: {
     username(state){
       return state.username;
-    },
-    isLogged(state) {
-      return state.isLogged;
     }
   },
   mutations: {
     setUserName(state, name) {
       state.username = name;
-    },
-    login(state) {
-      state.isLogged = true;
+      localStorage.setItem('username', name);
     }
   },
   actions: {
     updateUserName(store, payLoad) {
-      store.commit('setUserName', payLoad.name);
-      store.commit('login');
+      store.commit('setUserName', payLoad.username);
     }
   }
 };
