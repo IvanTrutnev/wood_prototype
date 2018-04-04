@@ -11,12 +11,19 @@
       <!--</div>-->
     </div>
     <div>
+        <google-map />
       	<router-link :to="{name: 'orders'}">Start from main page</router-link>
     </div>
   </div>
 </template>
 
 <script>
+  import GoogleMap from "./GoogleMap";
+  export default {
+    components: {
+      GoogleMap
+    }
+  };
 
 </script>
 

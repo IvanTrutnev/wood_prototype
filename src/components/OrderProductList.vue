@@ -6,6 +6,9 @@
       </h2>
     </div>
     <hr />
+     <div>
+         {{ $t('content')}}
+     </div>
     <div>
         <router-link :to="{name: 'orders'}">Start from main page</router-link>
     </div>

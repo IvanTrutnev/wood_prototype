@@ -9,6 +9,8 @@
                     </transition>
                 </button>
                 <div>
+                    <button class="btn btn-primary" @click="changeLang('ru')">RU</button>
+                    <button class="btn btn-primary" @click="changeLang('en')">ENG</button>
                     <span>{{username}}</span>
                     <button class="btn btn-secondary logout__btn" @click="logout">Logout</button>
                 </div>
@@ -42,6 +44,7 @@
 
 <script>
   import { mapGetters } from 'vuex';
+  import Vue from 'vue';
 
   export default {
     data() {
@@ -54,8 +57,8 @@
         localStorage.removeItem('login');
         location.reload();
       },
-      test() {
-        console.log(this.username);
+      changeLang(lang) {
+         Vue.i18n.set(lang)
       }
     },
     computed: {

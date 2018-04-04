@@ -24,14 +24,42 @@ import 'nprogress/nprogress.css'
 
 import VueSweetAlert from 'vue-sweetalert'
 
-Vue.use(VueSweetAlert)
+Vue.use(VueSweetAlert);
+
+import * as VueGoogleMaps from "vue2-google-maps";
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: "AIzaSyBuFImM6wvxOdEwEd2QYBtYv9A4Vcmhctk",
+    libraries: "places" // necessary for places input
+  }
+});
 
 
 import {store} from './store';
 import {router} from './routes.js';
 
-
 import VueResource from 'vue-resource';
+
+import vuexI18n from 'vuex-i18n';
+
+Vue.use(vuexI18n.plugin, store);
+
+const translationsEn = {
+  "content": "This is some {type} content"
+};
+
+const translationsRu = {
+  "content": "Содержание"
+};
+
+ // import translationsRu from './i18n/ru.json'
+ // import translationsEn from './i18n/ru.json'
+
+Vue.i18n.add('en', translationsEn);
+Vue.i18n.add('ru', translationsRu);
+
+Vue.i18n.set('en');
 
 Vue.use(VueResource);
 Vue.http.options.root = 'https://wood.visata.org/api/';
