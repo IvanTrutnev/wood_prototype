@@ -15,7 +15,7 @@ npm run dev
 npm run build
 ```
 
-##Techologies and libraries
+## Techologies and libraries
 1) [vue-cli] (https://github.com/vuejs/vue-cli)
 2) [vue-resource] (https://github.com/pagekit/vue-resource)
 3) [vue-router] (https://github.com/vuejs/vue-router)
