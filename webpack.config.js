@@ -21,6 +21,8 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           loaders: {
+            test: /\.json/,
+            loader: 'json',
           }
           // other vue-loader options go here
         }

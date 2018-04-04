@@ -8,10 +8,18 @@
                         <span v-else>Show</span>
                     </transition>
                 </button>
-                <div>
-                    <button class="btn btn-primary" @click="changeLang('ru')">RU</button>
-                    <button class="btn btn-primary" @click="changeLang('en')">ENG</button>
-                    <span>{{username}}</span>
+                <div class="d-flex">
+                    <div>
+                        <b-dropdown right :text="this.username">
+                            <b-dropdown-item @click="changeLang('lt')"><img class="lang-icon" src="./assets/lt.svg"></b-dropdown-item>
+                            <b-dropdown-divider></b-dropdown-divider>
+                            <b-dropdown-item @click="changeLang('ru')"><img class="lang-icon" src="./assets/ru.svg"></b-dropdown-item>
+                            <b-dropdown-divider></b-dropdown-divider>
+                            <b-dropdown-item @click="changeLang('en')"><img class="lang-icon" src="./assets/en.svg"></b-dropdown-item>
+                            <b-dropdown-divider></b-dropdown-divider>
+                            <b-dropdown-item @click="logout">Logout</b-dropdown-item>
+                        </b-dropdown>
+                    </div>
                     <button class="btn btn-secondary logout__btn" @click="logout">Logout</button>
                 </div>
             </header>
@@ -104,6 +112,20 @@
 
     .list-group-item.active a {
         color: inherit;
+    }
+    .dropdown-item {
+        text-align: center;
+        padding: 4px;
+    }
+    .dropdown-divider {
+        margin: 0;
+    }
+    .dropdown-item:hover {
+        //transform: scale(1.3);
+    }
+    .lang-icon {
+        height: 13px;
+        width: 20px;
     }
 
     .slide-enter {

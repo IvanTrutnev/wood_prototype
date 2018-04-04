@@ -45,19 +45,21 @@ import vuexI18n from 'vuex-i18n';
 
 Vue.use(vuexI18n.plugin, store);
 
-const translationsEn = {
-  "content": "This is some {type} content"
-};
+// const translationsEn = {
+//   "content": "This is some {type} content"
+// };
+//
+// const translationsRu = {
+//   "content": "Содержание"
+// };
 
-const translationsRu = {
-  "content": "Содержание"
-};
-
- // import translationsRu from './i18n/ru.json'
- // import translationsEn from './i18n/ru.json'
+import translationsRu from './i18n/ru.json'
+import translationsEn from './i18n/en.json'
+import translationsLt from './i18n/lt.json'
 
 Vue.i18n.add('en', translationsEn);
 Vue.i18n.add('ru', translationsRu);
+Vue.i18n.add('lt', translationsLt);
 
 Vue.i18n.set('en');
 
