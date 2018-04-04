@@ -12,6 +12,9 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 import "../node_modules/ag-grid/dist/styles/ag-grid.css";
 import "../node_modules/ag-grid/dist/styles/theme-fresh.css";
+import "../node_modules/ag-grid/dist/styles/theme-dark.css";
+import "../node_modules/ag-grid/dist/styles/theme-material.css";
+import "../node_modules/ag-grid/dist/styles/ag-theme-balham.css";
 
 import "../node_modules/vue-multiselect/dist/vue-multiselect.min.css";
 import "./assets/styles.css"

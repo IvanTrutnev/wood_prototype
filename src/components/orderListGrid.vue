@@ -1,6 +1,6 @@
 <template>
     <div>
-        <ag-grid-vue style="width: 100%; height: 350px;" class="ag-fresh" :gridOptions="gridOptions">
+        <ag-grid-vue style="width: 100%; height: 350px;" class="ag-theme-balham" :gridOptions="gridOptions">
 
         </ag-grid-vue>
     </div>
