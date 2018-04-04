@@ -6,12 +6,12 @@
     <div class="search-form">
       <div class="search-form__filters">
         <div>
-          <label class="typo__label">Creator</label>
-          <multiselect v-model="searchData.user.value" tag-placeholder="Add this as new tag" placeholder="Search or add a tag" label="username" track-by="username" :options="searchData.user.options" :multiple="true" :taggable="true"></multiselect>
+            <label class="typo__label">Creator</label>
+            <multiselect v-model="searchData.user.value" max-height="200" tag-placeholder="Add this as new tag" :show-labels="false" placeholder="Search a tag" label="username" track-by="username" :options="searchData.user.options" :multiple="true" :taggable="true"></multiselect>
         </div>
         <div>
             <label class="typo__label">Buyer</label>
-            <multiselect v-model="searchData.partner.value" tag-placeholder="Add this as new tag" placeholder="Search or add a tag" label="text" track-by="text" :options="searchData.partner.options" :multiple="true" :taggable="true"></multiselect>
+            <multiselect v-model="searchData.partner.value" max-height="200" tag-placeholder="Add this as new tag" :show-labels="false" placeholder="Search a tag" label="text" track-by="text" :options="searchData.partner.options" :multiple="true" :taggable="true"></multiselect>
         </div>
         <div>
             <label class="type__label">Descriptor</label>

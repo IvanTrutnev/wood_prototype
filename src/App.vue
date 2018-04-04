@@ -20,7 +20,7 @@
                             <b-dropdown-item @click="logout">Logout</b-dropdown-item>
                         </b-dropdown>
                     </div>
-                    <button class="btn btn-secondary logout__btn" @click="logout">Logout</button>
+                    <!--<button class="btn btn-secondary logout__btn" @click="logout">Logout</button>-->
                 </div>
             </header>
             <div class="row">
