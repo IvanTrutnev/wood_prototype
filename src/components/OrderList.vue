@@ -29,7 +29,10 @@
       </div>
     </div>
     <div>
-        <order-list-grid></order-list-grid>
+        <!--<order-list-grid></order-list-grid>-->
+        <ag-grid-vue style="width: 100%; height: 350px;" class="ag-theme-balham" :gridOptions="gridOptions">
+
+        </ag-grid-vue>
     </div>
   </div>
 </template>

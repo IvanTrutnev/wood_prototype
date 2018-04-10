@@ -35,25 +35,30 @@ Vue.use(VueGoogleMaps, {
   }
 });
 
-import {store} from './store';
-import {router} from './routes.js';
+import { store } from './store';
+import { router } from './routes.js';
 
 import VueResource from 'vue-resource';
 
-import vuexI18n from 'vuex-i18n';
+import ru from './i18n/ru.json'
+import en from './i18n/en.json'
+import lt from './i18n/lt.json'
 
-Vue.use(vuexI18n.plugin, store);
+const messages = {
+  en,
+  ru,
+  lt
+};
 
+import VueI18n from 'vue-i18n'
 
-import translationsRu from './i18n/ru.json'
-import translationsEn from './i18n/en.json'
-import translationsLt from './i18n/lt.json'
+Vue.use(VueI18n);
 
-Vue.i18n.add('en', translationsEn);
-Vue.i18n.add('ru', translationsRu);
-Vue.i18n.add('lt', translationsLt);
+const i18n = new VueI18n({
+  locale: localStorage.getItem('lang') || 'en',
+  messages
+});
 
-Vue.i18n.set('en');
 
 Vue.use(VueResource);
 Vue.http.options.root = 'https://wood.visata.org/api/';
@@ -65,12 +70,13 @@ Vue.http.interceptors.push((request, next) => {
     NProgress.done();
   });
 });
-import {commonFunctions} from "./store/index";
+import { commonFunctions } from "./store/index";
 
 new Vue({
   el: '#app',
   store,
   router,
+  i18n,
   render: h => h(App),
   created: function () {
     this.checkLogin();
@@ -88,7 +94,7 @@ new Vue({
         this.$router.push('');
         return
       }
-      if(this.$store.username && localStorage.getItem('login')) {
+      if (this.$store.username && localStorage.getItem('login')) {
         this.$router.push('');
       }
     }

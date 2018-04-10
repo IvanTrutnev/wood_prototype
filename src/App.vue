@@ -66,7 +66,8 @@
         location.reload();
       },
       changeLang(lang) {
-         Vue.i18n.set(lang)
+        this.$i18n.locale = lang;
+        localStorage.setItem('lang', lang);
       }
     },
     computed: {
