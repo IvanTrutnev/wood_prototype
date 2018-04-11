@@ -63,6 +63,7 @@
     methods: {
       logout() {
         localStorage.removeItem('login');
+        localStorage.removeItem('token');
         location.reload();
       },
       changeLang(lang) {

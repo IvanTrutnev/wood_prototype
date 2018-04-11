@@ -70,7 +70,7 @@ Vue.http.interceptors.push((request, next) => {
     NProgress.done();
   });
 });
-import { commonFunctions } from "./store/index";
+import { commonFunctions } from "./commonFuncitons";
 
 new Vue({
   el: '#app',

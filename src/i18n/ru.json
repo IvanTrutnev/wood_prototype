@@ -1,3 +1,8 @@
 {
-  "content": "Содержание"
+  "content": "Содержание",
+  "orders": {
+    "tables": {
+      "DATECREATE": "Дата создания"
+    }
+  }
 }
