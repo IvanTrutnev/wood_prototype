@@ -11,10 +11,5 @@ export const renderFunctions = {
     } else {
       return null;
     }
-  },
-  translateHeaders: (key, defaultValue) => {
-    let gridKey = 'grid.' + key;
-    let value = $t('translate')(gridKey);
-    return value === gridKey ? defaultValue : value;
   }
 };

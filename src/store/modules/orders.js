@@ -9,7 +9,6 @@ export default {
       enableColResize: true,
       animateRows: true,
       enableSorting: true,
-      getLocaleTextFunc: renderFunctions.translateHeaders,
       defaultColDef: {
         valueFormatter: function (params) {
           return renderFunctions.formatNumber(params.value);
