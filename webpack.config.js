@@ -23,6 +23,7 @@ module.exports = {
           loaders: {
             test: /\.json/,
             loader: 'json',
+            i18n: '@kazupon/vue-i18n-loader'
           }
           // other vue-loader options go here
         }
