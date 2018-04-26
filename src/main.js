@@ -59,6 +59,13 @@ const i18n = new VueI18n({
   messages
 });
 
+import '../node_modules/vue-awesome/icons'
+
+
+import Icon from '../node_modules/vue-awesome/components/Icon'
+
+Vue.component('icon', Icon)
+
 
 Vue.use(VueResource);
 Vue.http.options.root = 'https://wood.visata.org/api/';

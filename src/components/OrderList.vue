@@ -30,7 +30,8 @@
     </div>
     <div>
         <!--<order-list-grid></order-list-grid>-->
-        <ag-grid-vue style="width: 100%; height: 350px;" class="ag-theme-balham" :gridOptions="gridOptions">
+        <ag-grid-vue style="width: 100%; height: 350px;" class="ag-theme-balham" :gridOptions="gridOptions"
+        :rowDoubleClicked="goToOrder">
 
         </ag-grid-vue>
     </div>
@@ -75,6 +76,10 @@
 //      customFormatter(date) {
 //        return moment(date).format('YYYY-MM-DD');
 //      },
+      goToOrder(params) {
+        console.log(params.data.id)
+        this.$router.push({ path: `/orders/${params.data.id}` })
+      },
       search(){
         let user = this.searchData.user.value.map(item => item.id),
           partner = this.searchData.partner.value.map(item => item.id);

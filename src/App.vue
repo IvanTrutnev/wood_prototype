@@ -3,10 +3,10 @@
         <div v-if="$route.path !== '/login'">
             <header class="d-flex justify-content-between">
                 <button class="btn btn-info" @click="showMenuFlag = !showMenuFlag">
-                    <transition name="slide" mode="out-in">
-                        <span v-if="showMenuFlag">Hide</span>
-                        <span v-else>Show</span>
-                    </transition>
+                    <!--<span v-if="showMenuFlag">Hide</span>-->
+                    <!--<span v-else>Show</span>-->
+                    <icon v-if="showMenuFlag" name="angle-double-left"></icon>
+                    <icon v-else name="angle-double-right"></icon>
                 </button>
                 <div class="d-flex">
                     <div>

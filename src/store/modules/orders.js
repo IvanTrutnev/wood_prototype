@@ -9,6 +9,7 @@ export default {
       enableColResize: true,
       animateRows: true,
       enableSorting: true,
+      rowSelection: 'multiple',
       defaultColDef: {
         valueFormatter: function (params) {
           return renderFunctions.formatNumber(params.value);

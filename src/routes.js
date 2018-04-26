@@ -4,6 +4,7 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 import OrderList from './components/OrderList';
+import Order from './components/Order'
 import InvoiceList from './components/InvoiceList';
 import OrderProductList from './components/OrderProductList';
 import E404 from './components/E404';
@@ -25,11 +26,11 @@ const routes = [
     name: 'orders',
 		path: '/orders',
 		component: OrderList,
-  //   beforeEnter(from, to, next){
-  //     //store.dispatch('orders/loadItems');
-  //   next();
-  // }
 	},
+  {
+    path: '/orders/:id',
+    component: Order,
+  },
   {
     name: 'invoices',
 		path: '/invoices',
