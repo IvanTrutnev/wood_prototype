@@ -1,6 +1,7 @@
 <template>
     <div class="container-fluid">
         <div v-if="$route.path !== '/login'">
+            <!--<app-header></app-header>-->
             <header class="d-flex justify-content-between">
                 <button class="btn btn-info" @click="showMenuFlag = !showMenuFlag">
                     <!--<span v-if="showMenuFlag">Hide</span>-->
@@ -8,6 +9,7 @@
                     <icon v-if="showMenuFlag" name="angle-double-left"></icon>
                     <icon v-else name="angle-double-right"></icon>
                 </button>
+
                 <div class="d-flex">
                     <div>
                         <b-dropdown right :text="this.username">
@@ -53,6 +55,7 @@
 <script>
   import { mapGetters } from 'vuex';
   import Vue from 'vue';
+  import AppHeader from './components/common/Header.vue'
 
   export default {
     data() {
@@ -81,6 +84,9 @@
       ...mapGetters('login', {
         username: 'username'
       })
+    },
+    components: {
+        AppHeader
     }
   }
 
