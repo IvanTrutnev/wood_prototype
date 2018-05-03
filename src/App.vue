@@ -1,11 +1,14 @@
 <template>
     <div class="container-fluid">
         <div v-if="$route.path !== '/login'">
-            <!--<app-header></app-header>-->
-            <header class="d-flex justify-content-between">
+            <app-header :username="username"
+                        :showMenuFlag="showMenuFlag"
+                        @toggleMenu="toggleMenu">
+            </app-header>
+            <!--<header class="d-flex justify-content-between">
                 <button class="btn btn-info" @click="showMenuFlag = !showMenuFlag">
-                    <!--<span v-if="showMenuFlag">Hide</span>-->
-                    <!--<span v-else>Show</span>-->
+                    &lt;!&ndash;<span v-if="showMenuFlag">Hide</span>&ndash;&gt;
+                    &lt;!&ndash;<span v-else>Show</span>&ndash;&gt;
                     <icon v-if="showMenuFlag" name="angle-double-left"></icon>
                     <icon v-else name="angle-double-right"></icon>
                 </button>
@@ -22,9 +25,9 @@
                             <b-dropdown-item @click="logout">Logout</b-dropdown-item>
                         </b-dropdown>
                     </div>
-                    <!--<button class="btn btn-secondary logout__btn" @click="logout">Logout</button>-->
+                    &lt;!&ndash;<button class="btn btn-secondary logout__btn" @click="logout">Logout</button>&ndash;&gt;
                 </div>
-            </header>
+            </header>-->
             <div class="row">
                 <div class="menu col-sm-4" v-if="this.$route.path !== '/login' && showMenuFlag">
                     <ul class="list-group" v-if="showMenuFlag">
@@ -72,6 +75,9 @@
       changeLang(lang) {
         this.$i18n.locale = lang;
         localStorage.setItem('lang', lang);
+      },
+      toggleMenu(menuFlag) {
+        this.showMenuFlag = menuFlag;
       }
     },
     computed: {
