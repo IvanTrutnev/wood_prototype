@@ -67,17 +67,8 @@
       }
     },
     methods: {
-      logout() {
-        localStorage.removeItem('login');
-        localStorage.removeItem('token');
-        location.reload();
-      },
-      changeLang(lang) {
-        this.$i18n.locale = lang;
-        localStorage.setItem('lang', lang);
-      },
-      toggleMenu(menuFlag) {
-        this.showMenuFlag = menuFlag;
+      toggleMenu() {
+        this.showMenuFlag = !this.showMenuFlag;
       }
     },
     computed: {

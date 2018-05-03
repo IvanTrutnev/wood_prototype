@@ -32,15 +32,16 @@
       },
       methods: {
         logout() {
-          console.log('logout');
+          localStorage.removeItem('login');
+          localStorage.removeItem('token');
+          location.reload();
         },
         changeLang(lang) {
           this.$i18n.locale = lang;
           localStorage.setItem('lang', lang);
         },
         toggleMenu() {
-          this.showMenuFlag = !this.showMenuFlag;
-          this.$emit('toggleMenu', this.showMenuFlag);
+          this.$emit('toggleMenu');
         }
       }
     }
@@ -52,13 +53,6 @@
         margin-left: 20px;
     }
 
-    .list-group-item a {
-        text-decoration: none;
-    }
-
-    .list-group-item.active a {
-        color: inherit;
-    }
     .dropdown-item {
         text-align: center;
         padding: 4px;
@@ -67,7 +61,7 @@
         margin: 0;
     }
     .dropdown-item:hover {
-    //transform: scale(1.3);
+        /*transform: scale(1.3);*/
     }
     .lang-icon {
         height: 13px;
