@@ -38,7 +38,8 @@
                                      class="list-group-item"
                                      active-class="active"
                         >
-                            <a>{{ item.text }}</a>
+                            <a>{{ $t(item.text)}}</a>
+                            <!--{{ $t('content')}}-->
                         </router-link>
                     </ul>
                 </div>

@@ -1,5 +1,8 @@
 {
   "content": "Lt content",
+  "Order List": "Order List Lt",
+  "Invoices": "Invoice List Lt",
+  "Order Products": "Order Products Lt",
   "orders": {
     "tables": {
       "DATECREATE": "Lt date create"

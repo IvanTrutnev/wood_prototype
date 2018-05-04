@@ -12,7 +12,7 @@ export default {
 			},
 			{
 				url: '/orderProducts',
-				text: 'Order products'
+				text: 'Order Products'
 			}
 		]
 	},

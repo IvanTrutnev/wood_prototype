@@ -1,5 +1,8 @@
 {
   "content": "Содержание",
+  "Order List": "Список заказов",
+  "Invoices": "Список инвойсов",
+  "Order Products": "Заказ продукции",
   "orders": {
     "tables": {
       "DATECREATE": "Дата создания"
