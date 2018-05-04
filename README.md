@@ -27,6 +27,7 @@ npm run build
 9) [vue-sweetalert] (https://www.npmjs.com/package/vue-sweetalert)
 10) [vue2-google-maps] (https://www.npmjs.com/package/vue2-google-maps)
 11) [vuex-i18n] (https://www.npmjs.com/package/vuex-i18n)
+12) [vue-notification]  (https://github.com/euvl/vue-notification)
 
 
 

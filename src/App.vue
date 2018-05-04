@@ -1,5 +1,6 @@
 <template>
     <div class="container-fluid">
+        <notifications group="foo" position="bottom right"/>
         <div v-if="$route.path !== '/login'">
             <app-header :username="username"
                         :showMenuFlag="showMenuFlag"
@@ -102,7 +103,7 @@
         /*border-right: 1px solid #ddd;*/
     }
 
-    .menu__btn, .list-group {
+    .menu__btn {
         margin-top: 10px;
     }
 

@@ -40,7 +40,19 @@
     },
     methods: {
       saveOrder() {
-        console.log('save order')
+        console.log(this.currency.value)
+        this.$http.put(`sales/salesorders/${this.id}/`, {
+          currency: this.currency.value.id
+        })
+          .then(response => response.json())
+          .then(data => {
+            this.$notify({
+              group: 'foo',
+              title: 'SUCCESS',
+              type: 'success',
+              text: 'Order has been updated!'
+            });
+          });
       }
     },
     computed: {

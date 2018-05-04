@@ -76,6 +76,10 @@ Vue.http.interceptors.push((request, next) => {
     NProgress.done();
   });
 });
+
+import Notifications from 'vue-notification'
+Vue.use(Notifications)
+
 import { commonFunctions } from "./commonFuncitons";
 
 new Vue({
