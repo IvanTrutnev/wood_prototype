@@ -1,5 +1,8 @@
 <template>
     <div>
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-outline-success" @click="saveOrder">Save</button>
+        </div>
         <div>
             <h2>
                 Order {{id}}
@@ -9,7 +12,7 @@
         <div>
             <div>
                 <label class="typo__label">Currency</label>
-                <multiselect v-model="currency.value" :max-height="200" :show-labels="false" placeholder="Search a tag" label="code" track-by="code" :options="currencies" :multiple="false" :taggable="true"></multiselect>
+                <multiselect v-model="currency.value" :max-height="200" :searchable="false" :close-on-select="false" :show-labels="false"  placeholder="Search a tag" label="code" track-by="code" :options="currencies"></multiselect>
             </div>
         </div>
         <div>
@@ -33,6 +36,11 @@
           //options: [{name:'DKK'}, {name:'EUR'}, {name:'GBP'}, {name:'USD'}],
           value: []
         }
+      }
+    },
+    methods: {
+      saveOrder() {
+        console.log('save order')
       }
     },
     computed: {

@@ -39,7 +39,6 @@
                                      active-class="active"
                         >
                             <a>{{ $t(item.text)}}</a>
-                            <!--{{ $t('content')}}-->
                         </router-link>
                     </ul>
                 </div>
@@ -93,6 +92,10 @@
 <style scoped>
     .container-fluid {
         padding-top: 15px;
+    }
+
+    .row {
+        margin-top: 10px;
     }
 
     .menu {
