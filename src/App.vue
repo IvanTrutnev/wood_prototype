@@ -42,7 +42,7 @@
                         </router-link>
                     </ul>
                 </div>
-                <div v-bind:class="{ 'col-sm-8': showMenuFlag, 'col-sm-12': !showMenuFlag}">
+                <div :class="{ 'col-sm-8': showMenuFlag, 'col-sm-12': !showMenuFlag}">
                     <transition name="slide" mode="out-in">
                         <router-view></router-view>
                     </transition>
@@ -67,8 +67,8 @@
       }
     },
     methods: {
-      toggleMenu() {
-        this.showMenuFlag = !this.showMenuFlag;
+      toggleMenu(menuFlag) {
+        this.showMenuFlag = menuFlag;
       }
     },
     computed: {

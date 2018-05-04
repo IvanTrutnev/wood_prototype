@@ -2,8 +2,10 @@
     <div>
         <header class="d-flex justify-content-between">
             <button class="btn btn-info" @click="toggleMenu">
-                <icon v-if="showMenuFlag" name="angle-double-left"></icon>
-                <icon v-else name="angle-double-right"></icon>
+                <transition name="fade" mode="out-in">
+                    <icon v-if="showMenuFlag" name="angle-double-left" key="left"></icon>
+                    <icon v-else name="angle-double-right" key="right"></icon>
+                </transition>
             </button>
             <div class="d-flex">
                 <div>
@@ -41,7 +43,8 @@
           localStorage.setItem('lang', lang);
         },
         toggleMenu() {
-          this.$emit('toggleMenu');
+          this.showMenuFlag = !this.showMenuFlag;
+          this.$emit('toggleMenu', this.showMenuFlag);
         }
       }
     }
@@ -66,5 +69,12 @@
     .lang-icon {
         height: 13px;
         width: 20px;
+    }
+
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to {
+        opacity: 0;
     }
 </style>

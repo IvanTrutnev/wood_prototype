@@ -69,7 +69,6 @@ Vue.component('icon', Icon)
 
 Vue.use(VueResource);
 Vue.http.options.root = 'https://wood.visata.org/api/';
-//Vue.http.headers.common['Authorization'] = 'token 875ce3c994df550e37f4476bc8f1ac2570e2d9d3';
 
 Vue.http.interceptors.push((request, next) => {
   NProgress.start();
