@@ -7,7 +7,7 @@ import OrderList from './components/OrderList';
 import Order from './components/Order'
 import InvoiceList from './components/InvoiceList';
 import OrderProductList from './components/OrderProductList';
-import E404 from './components/E404';
+import E404 from './components/common/E404';
 import Login from './components/Login'
 
 import {store} from './store';
