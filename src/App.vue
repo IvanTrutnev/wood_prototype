@@ -69,7 +69,9 @@
     },
     methods: {
       toggleMenu(menuFlag) {
-        this.showMenuFlag = menuFlag;
+        setTimeout(() => {
+          this.showMenuFlag = menuFlag;
+        }, 200)
       }
     },
     computed: {
